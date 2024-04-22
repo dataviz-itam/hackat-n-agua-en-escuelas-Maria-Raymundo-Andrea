@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualización Radial de Calidad del Agua en Escuelas</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <style>
+        body { font-family: sans-serif; }
+        select { margin: 10px; }
+        #chart { display: flex; justify-content: center; align-items: center; height: 100vh; }
+    </style>
+</head>
+<body>
+    <select id="selectEntidad"></select>
+    <select id="selectMunicipio"></select>
+    <select id="selectEscuela"></select>
+    <div id="chart"></div>
+    <div id="tooltip" style="position: absolute; display: none; padding: 10px; background: rgba(255, 255, 255, 0.8); border: 1px solid #ccc; pointer-events: none;"></div>
+    <script src="main.js"></script>
+</body>
+</html>
