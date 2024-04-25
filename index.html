@@ -2,20 +2,96 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Visualización Radial de Calidad del Agua en Escuelas</title>
-    <script src="https://d3js.org/d3.v6.min.js"></script>
-    <style>
-        body { font-family: sans-serif; }
-        select { margin: 10px; }
-        #chart { display: flex; justify-content: center; align-items: center; height: 100vh; }
-    </style>
+    <title>Calidad del Agua en Escuelas</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlaza un archivo CSS para el estilo -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery para facilitar manipulación DOM y AJAX -->
 </head>
 <body>
-    <select id="selectEntidad"></select>
-    <select id="selectMunicipio"></select>
-    <select id="selectEscuela"></select>
-    <div id="chart"></div>
-    <div id="tooltip" style="position: absolute; display: none; padding: 10px; background: rgba(255, 255, 255, 0.8); border: 1px solid #ccc; pointer-events: none;"></div>
-    <script src="main.js"></script>
+    <header>
+        <h1>Calidad del Agua en Escuelas</h1> 
+    </header>     
+    <main>
+        <section id="introduction">
+            <h2>¿Por qué es relevante este esfuerzo?</h2>
+            <p>
+                No podemos pensar en nada más necesario en esta vida que el agua, específicamente, el agua potable. La buena salud del ser humano depende en su mayoría de que el cuerpo reciba agua de calidad. Lamentablemente, vivimos en un país en el que el agua potable se vuelve cada vez más un lujo. Un lujo que no necesariamente depende de cuánto puedas pagar, sino de en qué ciudad vives y si de casualidad, el agua que llega a tu casa no te hará daño después.
+            </p>
+            <p>
+                Dicho esto, es de esperarse que diversas escuelas alrededor de la nación tengan este mismo problema: falta de agua de calidad. ¿Por qué esto es especialmente preocupante? La escuela debe ser el segundo lugar más seguro para que un niño esté, después de su casa.
+            </p>
+            <p>
+                El proyecto propuesto busca utilizar datos específicos de calidad del agua de las escuelas ubicadas en toda la República Mexicana, con la finalidad de que ayude a informar y educar a los responsables de la toma de decisiones y al público en general. El objetivo es crear una herramienta digital que ayude al usuario a visualizar los datos y facilite la identificación del problema.
+            </p>
+            <p>
+                Además, este enfoque proactivo en la gestión y visualización de datos ayuda a promover una mayor transparencia y responsabilidad, elementos clave para la confianza pública y la gestión efectiva de la salud pública. Por lo tanto, el objetivo de este proyecto es doble: educar y provocar acción. Educar a todos los niveles de la sociedad sobre la importancia de la calidad del agua en las escuelas y, a su vez, equipar a los responsables de la toma de decisiones con herramientas poderosas para tomar medidas informadas. A través de visualizaciones claras y accesibles, se puede fomentar un diálogo constructivo sobre las necesidades y prioridades en la mejora de las infraestructuras y los servicios de agua en las escuelas, garantizando así un entorno más seguro y propicio para el aprendizaje de nuestros jóvenes.
+            </p>
+        </section>
+
+        <section id="metodologia">
+            <h2>Sobre nuestra metodología</h2>
+            <p>
+                Los datos incluyen distintos tipos de contaminantes con sus respectivas concentraciones divididos en tres categorías: parámetros biológicos químicos, parámetros químicos no metales, y parámetros químicos no metaloides. Esta información es vital, ya que cada uno de estos parámetros puede afectar de manera drástica la salud de los niños cuando las concentraciones superan los límites seguros establecidos por las autoridades sanitarias.
+            </p>
+            <p>
+                Los datos usados para lograr el proyecto fueron obtenidos de distintas fuentes. Para empezar, se decidió usar la base de datos en calidad de agua en escuelas que recopila los dictámenes de las pruebas realizadas de un tratamiento de los datos recopilados entre Cántaro Azul, el Inventario Nacional de Calidad del Agua y FANMex.  La base de datos tiene 43 diferentes parámetros: código postal, nivel educativo, nombre de la entidad , ubicación de la escuela, nombre del control (público o privado), alumnos total, docente total, parámetros biológicos y físicos, parámetros químicos, etc.                  Es importante mencionar que en este reporte no se incluyen todos los parámetros que se analizaron, solo aquellos que representan un daño significativo a aquél que consuma el agua con concentraciones por encima del límite permitido por la Norma Oficial Mexicana NOM-127-SSA1-2021.
+            </p>
+            <p>    
+                Asimismo, al analizar toda la información se encontró que había muchas casillas con NaN (not a number) y ND (no detectado) lo cual lo volvió más complicado por la falta de información. A continuación, se presenta un mapa de calor de la falta de información.
+            </p>
+        </section>
+    </main>
+    <section id="heatmap-section">
+        <h3>¿Qué tantos datos faltan?</h3>
+        <p>
+            Este mapa de calor nos ayuda a identificar rápidamente las áreas donde la recolección de datos puede necesitar más atención y dónde los esfuerzos de monitoreo son más consistentes. La comprensión de estos patrones es crucial para mejorar las estrategias de recolección de datos y asegurar que las decisiones relacionadas con la calidad del agua en las escuelas se basen en información completa y fiable.
+        </p>
+        <p>
+            Entre más clara sea la tonalidad de azul significa que más porcentaje de los datos falta.
+        </p>
+        <div id="heatmap"></div> <!-- Contenedor para el mapa de calor -->
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+        <script src="heatmap.js"></script>
+    </section>
+        <section id="did-you-know">
+            <h2>¿Sabías qué...?</h2>
+            <p>El agua que consumimos debe cumplir con estrictos estándares de calidad para garantizar nuestra salud y bienestar. Aquí algunos límites permisibles para compuestos comúnmente monitoreados en el agua potable:</p>
+            <ul>
+                <li><strong>Coliformes Fecales:</strong> Su presencia en el agua debe ser nula, ya que indican contaminación fecal y un alto riesgo de patógenos.</li>
+                <li><strong>Turbidez:</strong> No debe exceder de 4 NTU (Unidades Nefelométricas de Turbidez) para evitar la presencia de microorganismos y sedimentos que puedan alojar patógenos.</li>
+                <li><strong>Sólidos Disueltos:</strong> Limitados a 1000 mg/L para evitar problemas en el sabor, la apariencia y la salud.</li>
+                <li><strong>Nitratos:</strong> Su concentración no debe superar 11 mg/L debido a su potencial para causar metahemoglobinemia o 'síndrome del bebé azul'.</li>
+                <li><strong>Fluoruros:</strong> Limitados a 1.5 mg/L para proteger contra la fluorosis dental en niños.</li>
+                <li><strong>Plomo:</strong> Debe ser menor a 0.01 mg/L por sus graves efectos neurotóxicos, especialmente en niños.</li>
+                <li><strong>Aluminio:</strong> No debe exceder 0.2 mg/L para evitar problemas relacionados con la salud cerebral y los procesos digestivos.</li>
+                <li><strong>Hierro:</strong> Restringido a 0.3 mg/L para prevenir sabores y colores desagradables en el agua.</li>
+                <li><strong>Arsénico:</strong> Máximo permitido de 0.025 mg/L debido a sus efectos carcinogénicos y su toxicidad aguda.</li>
+            </ul>
+            <p>Estos parámetros son establecidos y regulados según la Norma Oficial Mexicana NOM-127-SSA1-2021 para asegurar que el agua no solamente sea segura para beber, sino también agradable al paladar. ¡Asegurar la calidad del agua es vital para la salud pública!</p>
+        </section>
+    <section id="data-selection">
+        <h3>Consulta la calidad de agua en las escuelas</h3>
+        <p> 
+            En el siguiente módulo puedes conocer los niveles detectados de una escuela en particular: solo introduce el Estado, el Municipio y el nombre de la escuela.
+            Recuerda: La calidad de agua en las escuelas es representativa de la calidad de agua en la zona...
+        </p>
+        <label for="state-select">Estado:</label>
+        <select id="state-select">
+            <option value="">Seleccione un estado</option>
+            <!-- Opciones generadas dinámicamente -->
+        </select>
+        <label for="municipality-select">Municipio:</label>
+        <select id="municipality-select">
+            <option value="">Seleccione un municipio</option>   
+            <!-- Opciones generadas dinámicamente -->
+        </select>
+        <label for="school-select">Escuela:</label>
+        <select id="school-select">
+            <option value="">Seleccione una escuela</option>
+            <!-- Opciones generadas dinámicamente -->
+        </select>
+        <div id="school-data"></div> <!-- Contenedor para mostrar los datos de la escuela -->
+    </section>
+    <script src="table.js"></script> <!-- Enlaza un archivo JavaScript para funcionalidad -->
 </body>
 </html>
+

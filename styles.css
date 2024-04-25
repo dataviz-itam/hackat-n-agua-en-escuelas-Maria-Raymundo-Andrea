@@ -1,0 +1,124 @@
+/* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 3px solid #eaeaea;
+    padding-bottom: 10px;
+}
+
+header h1 {
+    color: #222;
+    text-align: center;
+    padding-top: 20px;
+}
+
+header p {
+    color: #555;
+    margin-top: 1em;
+    text-align: justify;
+}
+
+section {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 10px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #3996f9;
+    color: #fff;
+}
+
+td {
+    background-color: #fff;
+    color: #555;
+}
+
+/* Colores para las celdas según su estado */
+.cell-within-limits {
+    background-color: #c7ffa6;
+}
+
+.cell-above-limits {
+    background-color: #ff9e9d;
+}
+
+.cell-no-data {
+    background-color: #e1e1e1;
+}
+
+/* Añadir un poco de espacio entre las celdas y una ligera redondez */
+table tr td, table tr th {
+    border: 1px solid #ddd;
+    border-spacing: 0;
+    border-radius: 4px;
+}
+
+/* Estilos para los botones o elementos interactivos */
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+select {
+    padding: 10px;
+    margin-right: 5px;
+}
+
+/* Estilos para los links */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Añadir algo de espacio al final de la página */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-top: 3px solid #eaeaea;
+}
+
+/* Media queries para la responsividad */
+@media (max-width: 768px) {
+    header, section {
+        margin: 10px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+}
