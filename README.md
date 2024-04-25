@@ -14,8 +14,7 @@ Para utilizar esta visualización, sigue los pasos a continuación:
 Descarga todos los archivos del repositorio y asegúrate de guardarlos en un mismo directorio en tu computadora local. Los archivos incluyen:
 - `index.html`: El archivo HTML principal que contiene la estructura de la página web.
 - `styles.css`: Hoja de estilos CSS para el diseño y formato de la página.
-- `heatmap.js`: Script de JavaScript para generar el primer mapa de calor.
-- `heatmap2.js`: Script de JavaScript para generar el segundo mapa de calor.
+- `heatmap.js`: Script de JavaScript para generar el mapa de calor con sus respectivos datos.
 - `table.js`: Script de JavaScript para otras funcionalidades interactivas.
 - Archivos de datos como `data.csv` (u otros archivos relevantes para las visualizaciones).
 
@@ -24,6 +23,3 @@ Una vez que todos los archivos estén en un solo directorio, abre el archivo `in
 
 ### Nota Importante
 Asegúrate de que todos los scripts y archivos de datos están correctamente enlazados en tu archivo HTML y que la estructura del directorio se mantiene como está descrito después de descargar los archivos.
-
-## Licencia
-Este proyecto está bajo una licencia MIT. Para más detalles, ver el archivo `LICENSE` incluido en este repositorio.
